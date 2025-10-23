@@ -1,1 +1,11 @@
-{}
+{
+  "AndEntityData": {
+    "o": {
+      "Out": {
+        "dt": "Bool",
+        "c": "The result"
+      }
+    },
+    "c": "This entity returns the result of the logical AND operator applied to all inputs."
+  }
+}

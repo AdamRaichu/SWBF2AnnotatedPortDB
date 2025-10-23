@@ -65,11 +65,7 @@ for (const line of lines.slice(1)) {
   }
 }
 
-// Create the output directory if it doesn't exist
-if (!fs.existsSync("generated")) {
-  fs.mkdirSync("generated");
-}
-
+console.log("Processing string hashes...");
 // Read strings.txt, hash strings, and replace hashes
 const stringsData = fs.readFileSync("HashDb/strings.txt", "utf-8");
 const stringLines = stringsData
@@ -77,8 +73,6 @@ const stringLines = stringsData
   .map((line) => line.trim())
   .filter((line) => line)
   .map((line) => line.replace(/\r$/, "")); // Remove any trailing \r
-
-console.log("Processing string hashes...");
 
 for (const strLine of stringLines) {
   const strHash = fnvHash(strLine);
@@ -98,7 +92,65 @@ for (const strLine of stringLines) {
   }
 }
 
+console.log("Applying user documentation...");
+// Apply user documentation
+fs.readdirSync("docs").forEach((docFile) => {
+  if (!docFile.endsWith(".json")) {
+    console.error("Skipping non-JSON file in docs/: " + docFile);
+  }
+  const docData = fs.readFileSync(`docs/${docFile}`, "utf-8");
+  const docJson = JSON.parse(docData);
+  for (const className in docJson) {
+    if (!output[className]) {
+      console.warn(`Warning: Documentation provided for unknown class ${className} in ${docFile}`);
+      continue;
+    }
+    const classDoc = docJson[className];
+    // Apply class comment
+    if (classDoc.c) {
+      output[className].c = classDoc.c;
+    }
+    // Apply input port documentation
+    if (classDoc.i) {
+      for (const portKey in classDoc.i) {
+        if (output[className].i[portKey]) {
+          const portDoc = classDoc.i[portKey];
+          if (portDoc.dt) {
+            output[className].i[portKey].dt = portDoc.dt;
+          }
+          if (portDoc.c) {
+            output[className].i[portKey].c = portDoc.c;
+          }
+        } else {
+          console.warn(`Warning: Documentation provided for unknown input port ${portKey} in class ${className} in ${docFile}`);
+        }
+      }
+    }
+    // Apply output port documentation
+    if (classDoc.o) {
+      for (const portKey in classDoc.o) {
+        if (output[className].o[portKey]) {
+          const portDoc = classDoc.o[portKey];
+          if (portDoc.dt) {
+            output[className].o[portKey].dt = portDoc.dt;
+          }
+          if (portDoc.c) {
+            output[className].o[portKey].c = portDoc.c;
+          }
+        } else {
+          console.warn(`Warning: Documentation provided for unknown output port ${portKey} in class ${className} in ${docFile}`);
+        }
+      }
+    }
+  }
+});
+
 console.log("Writing output files...");
+
+// Create the output directory if it doesn't exist
+if (!fs.existsSync("generated")) {
+  fs.mkdirSync("generated");
+}
 
 // Write the output
 fs.writeFileSync("generated/ports.min.json", JSON.stringify(output), "utf-8");

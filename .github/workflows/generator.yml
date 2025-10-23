@@ -1,0 +1,61 @@
+name: Auto Generate
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_publish:
+        description: "Force publish even if no changes detected"
+        required: false
+        default: "false"
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+      - ".github/**"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run generator
+        run: npm run generate
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "chore: update generated files [skip ci]"
+          git push
+
+      - name: Set up Python
+        if: steps.git-check.outputs.changes == 'true' || github.event.inputs.force_publish == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.14
+
+      - name: Run python publishing script
+        if: steps.git-check.outputs.changes == 'true' || github.event.inputs.force_publish == 'true'
+        run: |
+          python publish

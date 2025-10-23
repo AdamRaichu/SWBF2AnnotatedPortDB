@@ -17,7 +17,10 @@ The output generator merges all JSON files from the `docs` folder when creating 
   "AndEntityData": {
     "o": {
       // No period because this is not a sentence
-      "Out": ["Bool", "The result"]
+      "Out": {
+        "dt": "Bool",
+        "c": "The result"
+      }
     },
     // There is a period because the comment is a full sentence, with a subject and a verb.
     "c": "This entity returns the logical AND operator applied to all inputs."
