@@ -1,0 +1,4 @@
+[submodule "HashDb"]
+	path = HashDb
+	url = https://github.com/MagixGames/SWBF2HashDatabase
+	branch = main
