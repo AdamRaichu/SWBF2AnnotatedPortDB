@@ -28,6 +28,6 @@ class PageModifier(PageModifierBase):
 # Target a single page by title
 PageModifier(
     site,
-    title_list=["MediaWiki:Gadgets/calculator-page-operations/portlist defs.js"],
+    title_list=["MediaWiki:Gadgets/calculator-page-operations/portlist defs.json"],
     summary=summary,
 ).run()
