@@ -22,7 +22,7 @@ This project takes a list of entities and their hashed ports (generated using to
 
 **generator**: A NodeJS script that merges user documentation with raw data and outputs built files.
 
-**publish**: A python script that pushes the built file to swbf2frosty.wiki.gg. TODO: Unimplemented.
+**publish**: A python script that pushes the built file to swbf2frosty.wiki.gg.
 
 ## Contributing
 
