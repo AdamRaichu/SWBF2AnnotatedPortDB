@@ -11,9 +11,6 @@ site = WikiggClient(wiki="swbf2frosty", credentials=credentials)
 summary = "Update generated port database"
 
 port_data = ""
-preamble = (
-    "// Machine generated, see https://github.com/AdamRaichu/SWBF2AnnotatedPortDB\n"
-)
 
 with open("generated/ports.min.json", "r", encoding="utf-8") as f:
     port_data = f.read()
@@ -22,7 +19,7 @@ with open("generated/ports.min.json", "r", encoding="utf-8") as f:
 class PageModifier(PageModifierBase):
     def update_plaintext(self, text):
         # modify "text" and return the new content
-        return preamble + port_data
+        return port_data
 
 
 # Target a single page by title
