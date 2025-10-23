@@ -1,6 +1,6 @@
 # SWBF2 Annotated Port DB
 
-> **Note**
+> [!NOTE]
 >
 > I'm still figuring out the best way to set up this repository, I am not ready for contributions or usage yet.
 > Example: I should use the csv ports list instead of txt so I don't need users to provide port type.
