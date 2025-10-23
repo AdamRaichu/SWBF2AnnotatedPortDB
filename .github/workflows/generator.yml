@@ -6,7 +6,8 @@ on:
       force_publish:
         description: "Force publish even if no changes detected"
         required: false
-        default: "false"
+        default: false
+        type: boolean
   push:
     branches:
       - main
@@ -48,12 +49,12 @@ jobs:
           git push
 
       - name: Set up Python
-        if: steps.git-check.outputs.changes == 'true' || github.event.inputs.force_publish == 'true'
+        if: steps.git-check.outputs.changes == 'true' || github.event.inputs.force_publish
         uses: actions/setup-python@v5
         with:
           python-version: 3.14
 
       - name: Run python publishing script
-        if: steps.git-check.outputs.changes == 'true' || github.event.inputs.force_publish == 'true'
+        if: steps.git-check.outputs.changes == 'true' || github.event.inputs.force_publish
         run: |
           python publish
