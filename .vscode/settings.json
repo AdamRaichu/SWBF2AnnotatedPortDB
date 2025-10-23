@@ -1,0 +1,10 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "docs/*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/AdamRaichu/SWBF2AnnotatedPortDB/refs/heads/main/schema.json"
+    }
+  ]
+}

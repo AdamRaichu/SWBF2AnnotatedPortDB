@@ -25,6 +25,7 @@ for (const line of lines) {
       output[currentType] = {
         i: {}, // Initialize empty input array
         o: {}, // Initialize empty output array
+        c: "", // Initialize empty comment field
       };
     }
   } else if (trimmedLine.startsWith("Inputs")) {

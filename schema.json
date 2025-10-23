@@ -33,8 +33,7 @@
           ]
         },
         "propertyNames": {
-          "type": "string",
-          "pattern": "^0x[0-9a-fA-F]+$"
+          "type": "string"
         }
       },
       "o": {
@@ -67,12 +66,14 @@
           "type": "string",
           "pattern": "^0x[0-9a-fA-F]+$"
         }
+      },
+      "c": {
+        "type": "string",
+        "description": "Optional comment/annotation for the entity",
+        "default": ""
       }
     },
-    "required": [
-      "i",
-      "o"
-    ],
+    "required": [],
     "additionalProperties": false
   }
 }
