@@ -8,29 +8,29 @@
     "properties": {
       "i": {
         "type": "object",
-        "description": "Object mapping input port hash (hex string) to [type, annotation]",
+        "description": "Object mapping input port hash (hex string) to port information",
         "additionalProperties": {
-          "type": "array",
-          "minItems": 2,
-          "maxItems": 2,
-          "items": [
-            {
+          "type": "object",
+          "properties": {
+            "ct": {
               "type": "integer",
-              "description": "Port type (0: Unknown, 1: Property, 2: Event, 3: Link)",
+              "description": "Connection type (1: Property, 2: Event, 3: Link)",
               "enum": [
-                0,
                 1,
                 2,
                 3
-              ],
-              "default": 0
+              ]
             },
-            {
+            "dt": {
               "type": "string",
-              "description": "Optional comment/annotation for the port",
-              "default": ""
+              "description": "Data type of the port"
+            },
+            "c": {
+              "type": "string",
+              "description": "Optional comment/annotation for the port"
             }
-          ]
+          },
+          "required": []
         },
         "propertyNames": {
           "type": "string"
@@ -38,33 +38,32 @@
       },
       "o": {
         "type": "object",
-        "description": "Object mapping output port hash (hex string) to [type, annotation]",
+        "description": "Object mapping output port hash (hex string) to port information",
         "additionalProperties": {
-          "type": "array",
-          "minItems": 2,
-          "maxItems": 2,
-          "items": [
-            {
+          "type": "object",
+          "properties": {
+            "ct": {
               "type": "integer",
-              "description": "Port type (0: Unknown, 1: Property, 2: Event, 3: Link)",
+              "description": "Connection type (1: Property, 2: Event, 3: Link)",
               "enum": [
-                0,
                 1,
                 2,
                 3
-              ],
-              "default": 0
+              ]
             },
-            {
+            "dt": {
               "type": "string",
-              "description": "Optional comment/annotation for the port",
-              "default": ""
+              "description": "Data type of the port"
+            },
+            "c": {
+              "type": "string",
+              "description": "Optional comment/annotation for the port"
             }
-          ]
+          },
+          "required": []
         },
         "propertyNames": {
-          "type": "string",
-          "pattern": "^0x[0-9a-fA-F]+$"
+          "type": "string"
         }
       },
       "c": {
