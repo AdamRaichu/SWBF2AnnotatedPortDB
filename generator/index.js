@@ -23,8 +23,8 @@ for (const line of lines) {
     currentSection = null;
     if (!output[currentType]) {
       output[currentType] = {
-        i: [], // Initialize empty input array
-        o: [], // Initialize empty output array
+        i: {}, // Initialize empty input array
+        o: {}, // Initialize empty output array
       };
     }
   } else if (trimmedLine.startsWith("Inputs")) {
@@ -33,7 +33,7 @@ for (const line of lines) {
     currentSection = "o";
   } else if (currentSection && trimmedLine.startsWith("0x")) {
     // This is a hash value
-    output[currentType][currentSection].push([trimmedLine, 0, ""]);
+    output[currentType][currentSection][trimmedLine] = [0, ""];
   }
 }
 

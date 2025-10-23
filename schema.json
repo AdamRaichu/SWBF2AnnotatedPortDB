@@ -4,25 +4,19 @@
   "description": "Schema for SWBF2 port definitions and annotations",
   "additionalProperties": {
     "type": "object",
-    "description": "Type definition containing input and output ports",
+    "description": "Type definition containing input and output ports as objects keyed by hex hash",
     "properties": {
       "i": {
-        "type": "array",
-        "description": "Array of input ports with their type and annotations",
-        "items": {
+        "type": "object",
+        "description": "Object mapping input port hash (hex string) to [type, annotation]",
+        "additionalProperties": {
           "type": "array",
-          "description": "Port entry containing hash, type, and annotation",
-          "minItems": 3,
-          "maxItems": 3,
+          "minItems": 2,
+          "maxItems": 2,
           "items": [
             {
-              "type": "string",
-              "description": "Port hash value in hexadecimal format",
-              "pattern": "^0x[0-9a-fA-F]+$"
-            },
-            {
               "type": "integer",
-              "description": "Port type (0: Unknown, 1: Connection, 2: Event, 3: Link)",
+              "description": "Port type (0: Unknown, 1: Property, 2: Event, 3: Link)",
               "enum": [
                 0,
                 1,
@@ -37,25 +31,23 @@
               "default": ""
             }
           ]
+        },
+        "propertyNames": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]+$"
         }
       },
       "o": {
-        "type": "array",
-        "description": "Array of output ports with their type and annotations",
-        "items": {
+        "type": "object",
+        "description": "Object mapping output port hash (hex string) to [type, annotation]",
+        "additionalProperties": {
           "type": "array",
-          "description": "Port entry containing hash, type, and annotation",
-          "minItems": 3,
-          "maxItems": 3,
+          "minItems": 2,
+          "maxItems": 2,
           "items": [
             {
-              "type": "string",
-              "description": "Port hash value in hexadecimal format",
-              "pattern": "^0x[0-9a-fA-F]+$"
-            },
-            {
               "type": "integer",
-              "description": "Port type (0: Unknown, 1: Connection, 2: Event, 3: Link)",
+              "description": "Port type (0: Unknown, 1: Property, 2: Event, 3: Link)",
               "enum": [
                 0,
                 1,
@@ -70,6 +62,10 @@
               "default": ""
             }
           ]
+        },
+        "propertyNames": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]+$"
         }
       }
     },
