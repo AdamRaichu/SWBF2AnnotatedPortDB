@@ -6,6 +6,6 @@
         "c": "The result"
       }
     },
-    "c": "This entity returns the result of the logical AND operator applied to all inputs."
+    "c": "This entity returns the result of the logical AND operator applied to all inputs. The number of inputs is dependent on the InputCount property. See #AndEntityData."
   }
 }
