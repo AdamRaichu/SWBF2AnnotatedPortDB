@@ -1,0 +1,21 @@
+{
+  "name": "swbf2annotatedportdb",
+  "version": "0.0.1",
+  "description": "",
+  "main": "generator/index.js",
+  "scripts": {
+    "test": "echo No tests",
+    "generate": "node ./generator/index.js",
+    "publish": "py publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamRaichu/SWBF2AnnotatedPortDB.git"
+  },
+  "author": "AdamRaichu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AdamRaichu/SWBF2AnnotatedPortDB/issues"
+  },
+  "homepage": "https://github.com/AdamRaichu/SWBF2AnnotatedPortDB#readme"
+}

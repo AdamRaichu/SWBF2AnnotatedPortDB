@@ -1,0 +1,1 @@
+print("Publishing to mediawiki...")
