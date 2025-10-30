@@ -2,7 +2,7 @@
   "AndEntityData": {
     "o": {
       "Out": {
-        "dt": "Bool",
+        "dt": "Boolean",
         "c": "The result"
       }
     },
