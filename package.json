@@ -4,7 +4,7 @@
   "description": "",
   "main": "generator/index.js",
   "scripts": {
-    "test": "echo No tests",
+    "test": "npm run generate && echo Test page available at http://localhost:1337/test/index.html && st",
     "generate": "node ./generator/index.js",
     "publish": "py publish"
   },
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/AdamRaichu/SWBF2AnnotatedPortDB/issues"
   },
-  "homepage": "https://github.com/AdamRaichu/SWBF2AnnotatedPortDB#readme"
+  "homepage": "https://github.com/AdamRaichu/SWBF2AnnotatedPortDB#readme",
+  "devDependencies": {
+    "st": "^3.0.3"
+  }
 }
