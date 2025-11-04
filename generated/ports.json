@@ -80351,12 +80351,12 @@
       "0x592649bc": {
         "ct": 1,
         "dt": "",
-        "c": ""
+        "c": "NOT affected by affector"
       },
       "0x126e3e73": {
         "ct": 1,
         "dt": "",
-        "c": ""
+        "c": "IS affected by affector"
       },
       "BrakeInAirInputStartIndex": {
         "ct": 2,

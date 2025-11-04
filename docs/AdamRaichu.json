@@ -10,5 +10,15 @@
   },
   "AIWaypointsShapeData": {
     "c": "Link inputs are determined by the array of `Waypoints` defined in the properties of this entity. The name of the link input is determined by `SchematicsNameHash` and will reference that waypoint. Set `WaypointId` to 0x[the first 8 digits of the GUID of the object]. See #WaypointData."
+  },
+  "AffectorQueryFilterEntityData": {
+    "o": {
+      "0x592649bc": {
+        "c": "NOT affected by affector"
+      },
+      "0x126e3e73": {
+        "c": "IS affected by affector"
+      }
+    }
   }
 }

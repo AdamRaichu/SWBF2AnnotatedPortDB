@@ -6,5 +6,9 @@
       ],
       "url": "https://raw.githubusercontent.com/AdamRaichu/SWBF2AnnotatedPortDB/refs/heads/main/schema.json"
     }
+  ],
+  "cSpell.words": [
+    "affector",
+    "annotatedportdb"
   ]
 }
