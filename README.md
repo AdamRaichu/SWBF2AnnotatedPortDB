@@ -1,10 +1,6 @@
 # SWBF2 Annotated Port DB
 
-> [!NOTE]
->
-> I'm still figuring out the best way to set up this repository, I am not ready for contributions or usage yet.
-
-A database of entities and their ports with user-created documentation.
+A database of entities and their ports from SWBF2 (2017) with user-created documentation.
 
 ## About
 
