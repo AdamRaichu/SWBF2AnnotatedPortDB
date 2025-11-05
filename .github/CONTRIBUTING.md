@@ -6,6 +6,10 @@ Here are some simple guidelines I wrote. If you have questions just message me o
 
 The output generator merges all JSON files from the `docs` folder when creating the output. To prevent merge conflicts, create a file called `{YourUsernameHere}.json` and make your changes there. Follow the JSON schema for format, see `AdamRaichu.json` or `ports.json` for examples.
 
+## Testing
+
+You can use the command `npm run test` to open up the preview locally before publishing. The URL is printed in the output of the command.
+
 ## Grammar
 
 - Always use the [Oxford Comma](https://en.wikipedia.org/wiki/Serial_comma) where applicable[^1].
